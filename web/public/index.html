@@ -1,1 +1,37 @@
-<!DOCTYPE html><html lang=en><head><meta charset=utf-8><meta http-equiv=X-UA-Compatible content="IE=edge"><meta name=viewport content="width=device-width,initial-scale=1"><link rel=icon href=/favicon.ico><title>vueapp</title><link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;600;700;800&display=swap" rel=stylesheet :w><link href=/css/app.444b88a4.css rel=preload as=style><link href=/css/chunk-vendors.a4b346ea.css rel=preload as=style><link href=/js/app.92effcd3.js rel=preload as=script><link href=/js/chunk-vendors.a9bddd32.js rel=preload as=script><link href=/css/chunk-vendors.a4b346ea.css rel=stylesheet><link href=/css/app.444b88a4.css rel=stylesheet></head><body><noscript><strong>We're sorry but vueapp doesn't work properly without JavaScript enabled. Please enable it to continue.</strong></noscript><div id=app></div><script src=/js/chunk-vendors.a9bddd32.js></script><script src=/js/app.92effcd3.js></script></body></html>
+<!Doctype html>
+<html>
+	<head>
+		<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;500;600;700&display=swap" rel="stylesheet">
+		<link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css" integrity="sha384-Vkoo8x4CGsO3+Hhxv8T/Q5PaXtkKtu6ug5TOeNV6gBiFeWPGFN9MuhOf23Q9Ifjh" crossorigin="anonymous">
+		<link rel="stylesheet" type="text/css" href="css/styles.css" media="screen"/>
+		<meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no"> 
+	</head>
+	<body>
+		<div id="wrapper" class="container">
+			<div id="header-row" class="row">
+				<div class="col">
+					<h5 class="header-text">SARS-COV-2 en Chile</h5>
+				</div>
+				<div class="col">
+					<h5 id="refreshDate" class="header-text">25 de Mayo</h5>
+				</div>
+			</div>
+			<div id="main-row" class="row">
+				<div id="first-col" class="col">
+					<p class="main-text">
+					Hay <span id="totalCount">22.159</span> <span class="bold">casos</span>
+					en Chile. Hoy hubieron <span id="newCount">3.500</span> <span class="bold">casos nuevos,</span>
+					<span id="newCountYesterday">700</span> <span class="bold">mas que ayer.</span>
+					Hay <span id="activeCount">17.400</span> <span class="bold">casos activos,</span>
+					<span id="recoveredCount">3.500</span> <span class="bold">recuperados,</span> y
+					<span id="deadCount">450</span> <span class="bold">fallecidos</span> a la fecha -
+					ayer <span class="bold">murieron</span> <span id="yesterdayDeadCount">15</span>
+					<span class="bold">personas.</span>
+					</p>
+				</div>
+			</div>
+		</div>
+		<script src="main.js"></script>
+	</body>
+</html>
+
