@@ -1,0 +1,11 @@
+{
+  "name": "covidpoem",
+  "version": "1.0.0",
+  "description": "a text-based covid tracker for chile.",
+  "main": "/src/main.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "author": "Nikolai Kozak",
+  "license": "MIT"
+}
