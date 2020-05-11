@@ -1,3 +1,38 @@
 * {
 	font-family: 'Playfair Display', serif;
 }
+
+#wrapper {
+	padding: 1.2rem 2rem 0rem 2rem;
+}
+
+#header-row {
+	padding: 0rem 0rem .7rem 0rem;
+	border-bottom: 1px solid #F2F2F2;
+}
+
+#main-row {
+	padding: .7rem 0rem 0rem 0rem;
+}
+
+.header-text {
+	color: #D9D9D9;
+	font-size: .8rem;
+}
+
+.main-text {
+	font-size: 2.2rem;
+	color: #D9D9D9;
+}
+
+.count {
+	color: #A62628;
+}
+
+.bold {
+	color: #595959;
+}
+
+/* #F2F2F2 #D9D9D9 #A6A6A6 #595959 #262626 */
+
+/* #A62628 */
