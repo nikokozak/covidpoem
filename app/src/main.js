@@ -108,6 +108,8 @@ axios.get('https://raw.githubusercontent.com/MinCiencia/Datos-COVID19/master/out
 	
 	console.log(_h.getQuarantineList(result.data))
 
+	_h.changeText('quarantineList', _h.getQuarantineList(result.data))
+
 	// IMPLEMENT LOOP AND LIST POPULATE.
 
 });

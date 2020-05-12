@@ -191,9 +191,11 @@ const _h = (function() {
 				let test = re.exec(c['Nombre'].toString())
 
 				let result = test ? test[1].slice(0, -1) : c['Nombre']
+
+				console.log('regex result', result)
 				
 				return a + result + ', ' 
-			})
+			}, '')
 
 		return result.slice(0, result.length - 2)
 
