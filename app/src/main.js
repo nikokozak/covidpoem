@@ -18,6 +18,8 @@ axios.get('https://raw.githubusercontent.com/MinCiencia/Datos-COVID19/master/out
 
 	result = _h.handleParseErrors(result)
 
+	console.log(result)
+
 	// Get the latest data item from the data array.
 	let latestData = _h.getLatestData(result)
 
@@ -43,7 +45,10 @@ axios.get('https://raw.githubusercontent.com/MinCiencia/Datos-COVID19/master/out
 	console.log(duplicateDays)
 	_h.changeCount("dupTime", duplicateDays)
 
-	makeTimer('timer', 'Casos totales', result)
+	makeTimer('newTimer', 'Casos totales', result)
+	makeTimer('deathTimer', 'Fallecidos', result)
+	makeTimer('recoveredTimer', 'Casos recuperados', result)
+	
 
 });
 
