@@ -11,6 +11,8 @@ function makeTimer (id, column, data) {
 }
 
 function countdownClock (secs, id=null) {
+	
+	let store = secs
 
 	return setInterval(() => {
 
@@ -20,6 +22,10 @@ function countdownClock (secs, id=null) {
 		var seconds = sec_num % 60
 
 		secs -= 1
+
+		if (secs == 0) {
+			secs = store
+		}
 
 		if (id) {
 			document.getElementById(id).innerHTML = [hours,minutes,seconds]
