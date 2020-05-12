@@ -36,11 +36,9 @@ const _h = (function() {
 	}
 	
 	// Get the latest data entry from the Papa object data array.
-	function getLatestData (parseObj, format = true) {
+	function getLatestData (parseObj) {
 
-		let result = parseObj.data[parseObj.data.length - 1]
-	
-		return format ? formatNumber(result) : result
+		return parseObj.data[parseObj.data.length - 1]
 
 	}
 
@@ -73,9 +71,24 @@ const _h = (function() {
 		let rowa = data[index - row1]
 		let rowb = data[index - row2]
 
-		result = rowa[column] - rowb[column]
+		let result = rowa[column] - rowb[column]
 
 		return format ? formatNumber(result) : result		
+	}
+
+	function meanDataFromEnd (numRows, column, parseObj, includeLast = true) {
+		
+		let data = parseObj.data
+		let start = data.length - 1 - numRows
+		let end = includeLast ? data.length : data.length - 1
+		
+		let slice = data.slice(start, end)
+
+		let result = slice.reduce( (a, c) => a + parseFloat(c[column]), 0.0 )
+		result = (result / numRows).toFixed(2)
+
+		return result
+
 	}
 
 	// Get the total count from a single Papa data object.
@@ -84,6 +97,14 @@ const _h = (function() {
 		let result = parseData['Casos totales']
 
 		return format ? formatNumber(result) : result	
+	}
+
+	function getDuplDayCount(parseData,) {
+		
+		let result = parseData['Casos totales'] / parseData['Casos nuevos totales']
+		
+		return Math.round(result)
+		
 	}
 
 	function getActiveCount (parseData, format = true) {
@@ -123,6 +144,43 @@ const _h = (function() {
 		return parseData['Fecha']
 
 	}
+
+	// Get the total number of occupied ventilators from a Papa data object.
+	function getVentilatorCount (parseData, format = true) {
+
+		let result = parseData['disponibles']
+
+		return format ? formatNumber(result) : result
+
+	}
+
+	function getCriticalCount (parseData, format = true) {
+
+		let result = parseData['Pacientes criticos']
+
+		return format ? formatNumber(result) : result
+
+	}
+
+	function getBedCount (parseData, format = true) {
+
+		let result = parseData['<=39']
+			+ parseData['40-49']
+			+ parseData['50-59']
+			+ parseData['60-69']
+			+ parseData['>=70']
+
+		return format ? formatNumber(result) : result
+
+	}
+
+	function getTestingCount (parseData, format = true) {
+		
+		let result = parseData['Numero de PCR']
+
+		return format ? formatNumber(result) : result
+
+	}
 	
 	// Change the count displayed in a given id tag.
 	function changeCount (id, newCount) {
@@ -140,16 +198,22 @@ const _h = (function() {
 		handleParseErrors,
 		formatNumber,
 		changeText,
+		meanDataFromEnd,
 		changeCount,
 		switchFormat,
 		diffDataFromEnd,
 		getTailData,
 		getLatestData,
+		getDuplDayCount,
 		getTotalCount,
 		getActiveCount,
 		getNewCount,
 		getRecoveredCount,
 		getDeadCount,
+		getVentilatorCount,
+		getCriticalCount,
+		getBedCount,
+		getTestingCount,
 		getDate,
 
 	}
