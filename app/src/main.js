@@ -1,6 +1,7 @@
 const axios = require('axios').default
 import Papa from './papaparse.min.js'
 import _h from './utils.js'
+import {makeTimer} from './timer.js'
 
 const PARSEOPTIONS = {
 	skipEmptyLines: true,
@@ -41,6 +42,8 @@ axios.get('https://raw.githubusercontent.com/MinCiencia/Datos-COVID19/master/out
 	let duplicateDays = _h.getDuplDayCount(latestData)
 	console.log(duplicateDays)
 	_h.changeCount("dupTime", duplicateDays)
+
+	makeTimer('timer', 'Casos totales', result)
 
 });
 
@@ -106,11 +109,7 @@ axios.get('https://raw.githubusercontent.com/MinCiencia/Datos-COVID19/master/out
 
 	let result = Papa.parse(response.data, PARSEOPTIONS)
 	
-	console.log(_h.getQuarantineList(result.data))
-
 	_h.changeText('quarantineList', _h.getQuarantineList(result.data))
-
-	// IMPLEMENT LOOP AND LIST POPULATE.
 
 });
 
