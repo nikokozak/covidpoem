@@ -181,6 +181,23 @@ const _h = (function() {
 		return format ? formatNumber(result) : result
 
 	}
+
+	// Aggregate all Quarantine names to string, prune with regexp.
+	function getQuarantineList (data) {
+		
+		let result = data.reduce( (a, c) => 
+			{
+				let re = /([\s\S]*)(Extensión a Total|Extendido)/gu
+				let test = re.exec(c['Nombre'].toString())
+
+				let result = test ? test[1].slice(0, -1) : c['Nombre']
+				
+				return a + result + ', ' 
+			})
+
+		return result.slice(0, result.length - 2)
+
+	}
 	
 	// Change the count displayed in a given id tag.
 	function changeCount (id, newCount) {
@@ -214,6 +231,7 @@ const _h = (function() {
 		getCriticalCount,
 		getBedCount,
 		getTestingCount,
+		getQuarantineList,
 		getDate,
 
 	}

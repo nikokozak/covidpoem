@@ -1,5 +1,6 @@
 module.exports = {
 	entry: './src/main.js',
+	watch: true,
 	output: {
 		filename: 'main.js',
 		path: '/home/nikokozak/webdev/covidpoem/web/public',

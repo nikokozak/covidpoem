@@ -101,5 +101,16 @@ axios.get('https://raw.githubusercontent.com/MinCiencia/Datos-COVID19/master/out
 
 });
 
+// Get CSV for Quarantine
+axios.get('https://raw.githubusercontent.com/MinCiencia/Datos-COVID19/master/output/producto29/Cuarentenas-Activas.csv').then( response => {
+
+	let result = Papa.parse(response.data, PARSEOPTIONS)
+	
+	console.log(_h.getQuarantineList(result.data))
+
+	// IMPLEMENT LOOP AND LIST POPULATE.
+
+});
+
 
 console.log("Hey!");
