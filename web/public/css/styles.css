@@ -114,6 +114,9 @@
 .underline {
 	text-decoration: underline dotted #A62628;
 	cursor: pointer;
+	-webkit-text-decoration-line: underline;
+	-webkit-text-decoration-style: dotted;
+	-webkit-text-decoration-color: #A62628;
 }
 
 .bold {
