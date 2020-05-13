@@ -124,7 +124,11 @@ axios.get('https://raw.githubusercontent.com/MinCiencia/Datos-COVID19/master/out
 
 // JQUERY MODAL HANDLES
 
-$('#newCount').on('click', () => MicroModal.show('modal'));
+function handleClick (id, data) {
+	let handle = "#" + id
+	$(handle).on('click', () => MicroModal.show('modal'));
+} 
+
 
 
 console.log("Hey!");
