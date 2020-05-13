@@ -107,6 +107,12 @@
 	color: #C1C1C1;
 }
 
+.small-text {
+	font-size: 1.5rem;
+	color: #C1C1C1;
+	margin-top: 4rem;
+} 
+
 .count {
 	color: #A62628;
 }
