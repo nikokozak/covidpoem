@@ -223,7 +223,7 @@ const _h = (function() {
 		let result = data.reduce( (a, c) => 
 			{
 				
-				let re = /([\s\S]*)(Extensión a Total|Extendido)/gu
+				let re = /([\s\S]*)(Extensión a Total|Extendido|Re-ingreso total|Re-ingreso Total)/gu
 				let test = re.exec(c['Nombre'].toString())
 
 				let result = test ? test[1].slice(0, -1) : c['Nombre']

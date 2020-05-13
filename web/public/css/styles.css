@@ -104,11 +104,16 @@
 
 .main-text {
 	font-size: 2.2rem;
-	color: #D9D9D9;
+	color: #C1C1C1;
 }
 
 .count {
 	color: #A62628;
+}
+
+.underline {
+	text-decoration: underline dotted #A62628;
+	cursor: pointer;
 }
 
 .bold {
