@@ -54,9 +54,12 @@ axios.get('https://raw.githubusercontent.com/MinCiencia/Datos-COVID19/master/out
 	makeTimer('deathTimer', 'Fallecidos', result)
 	makeTimer('recoveredTimer', 'Casos recuperados', result)
 
-	// TESTING CHART HANDLERS
+	// CHART HANDLERS
 
 	handleClick('totalCount', 'Casos Totales', formatData(10, 'Casos totales', result))
+	handleClick('newCount', 'Casos Nuevos', formatData(10, 'Casos nuevos totales', result))
+	handleClick('activeCount', 'Casos Activos', formatData(10, 'Casos activos', result))
+	handleClick('deadCount', 'Fallecidos', formatData(10, 'Fallecidos', result))
 
 });
 

@@ -21,52 +21,57 @@ function handleClick (id, chartTitle, _data) {
 	
 	let handle = "#" + id
 
-	$( handle ).on( 'click', () => MicroModal.show('modal') )
+	$( handle ).on( 'click', () => { 
 
-	$( '#chart-title' ).text( chartTitle )
+		MicroModal.show('modal') 
 
-	let ctx = $( '#chartInsert' )
+		$( '#chart-title' ).text( chartTitle )
 
-	let chart = new Chart (ctx, {
+		let ctx = $( '#chartInsert' )
 
-		type: 'line',
-		
-		// Requires array of objects, x: Date and y: Data keys.
-		data: {
+		let chart = new Chart (ctx, {
 
-			datasets: [{
-				
-				data: _data,
-
-				borderColor: 'rgba(125, 0, 0, 0.5)',
-				backgroundColor: 'rgba(125, 0, 0, 0.5)',
-				pointBackgroundColor: 'rgba(125, 0, 0, 0.5)',
-	
-			}]
-
-		},
-
-		options: {
-
-			legend: {
+			type: 'line',
 			
-				display: false,
+			// Requires array of objects, x: Date and y: Data keys.
+			data: {
+
+				datasets: [{
+					
+					data: _data,
+
+					borderColor: 'rgba(125, 0, 0, 0.5)',
+					backgroundColor: 'rgba(125, 0, 0, 0.5)',
+					pointBackgroundColor: 'rgba(125, 0, 0, 0.5)',
+		
+				}]
 
 			},
 
-			scales: {
+			options: {
+
+				legend: {
 				
-				xAxes: [{
+					display: false,
 
-					type: 'time',
+				},
 
-				}]
+				scales: {
+					
+					xAxes: [{
 
-			}
+						type: 'time',
 
-		} 
+					}]
 
+				}
+
+			} 
+
+		})
 	})
+
+	
 
 	//console.log(chart)
 
