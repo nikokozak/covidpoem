@@ -27,6 +27,8 @@
 .modal_container {
 	background-color: #fff;
 	padding: 30px;
+	min-width: 400px;
+	min-height: 400px;
 	max-width: 500px;
 	max-height: 100vh;
 	border-radius: 4px;
@@ -35,9 +37,14 @@
 }
 
 .modal_header {
-	display: flex;
+	/* - Not sure if necessary - display: flex; */
 	justify-content: space-between;
 	align-items: center;
+	text-align: center;
+}
+
+.modal_title {
+	
 }
 
 .modal_content {

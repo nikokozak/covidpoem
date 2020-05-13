@@ -56,7 +56,7 @@ axios.get('https://raw.githubusercontent.com/MinCiencia/Datos-COVID19/master/out
 
 	// TESTING CHART HANDLERS
 
-	handleClick('totalCount', formatData(10, 'Casos totales', result))
+	handleClick('totalCount', 'Casos Totales', formatData(10, 'Casos totales', result))
 
 });
 

@@ -17,11 +17,13 @@ function formatData ( numRows, column, data ) {
 
 }
 
-function handleClick (id, _data) {
+function handleClick (id, chartTitle, _data) {
 	
 	let handle = "#" + id
 
 	$( handle ).on( 'click', () => MicroModal.show('modal') )
+
+	$( '#chart-title' ).text( chartTitle )
 
 	let ctx = $( '#chartInsert' )
 
@@ -35,12 +37,22 @@ function handleClick (id, _data) {
 			datasets: [{
 				
 				data: _data,
+
+				borderColor: 'rgba(125, 0, 0, 0.5)',
+				backgroundColor: 'rgba(125, 0, 0, 0.5)',
+				pointBackgroundColor: 'rgba(125, 0, 0, 0.5)',
 	
 			}]
 
 		},
 
 		options: {
+
+			legend: {
+			
+				display: false,
+
+			},
 
 			scales: {
 				
