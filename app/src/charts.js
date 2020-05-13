@@ -1,5 +1,6 @@
 import Chart from 'chart.js'
 import $ from 'jquery'
+import MicroModal from 'micromodal'
 
 function formatData ( numRows, column, data ) {
 
@@ -9,27 +10,54 @@ function formatData ( numRows, column, data ) {
 	let tail = data.data.slice(startIndex, endIndex)
 
 	let formatted = tail.map(d => { return { x: new Date(d.Fecha), y: d[column] } })
+	
+	console.log('formatted', formatted)
 
 	return formatted
 
 }
 
-function handleClick (id, data) {
+function handleClick (id, _data) {
 	
 	let handle = "#" + id
 
-	let ctx = $( handle )
+	$( handle ).on( 'click', () => MicroModal.show('modal') )
+
+	let ctx = $( '#chartInsert' )
 
 	let chart = new Chart (ctx, {
 
 		type: 'line',
 		
 		// Requires array of objects, x: Date and y: Data keys.
-		data: [{
-			
-		}]
+		data: {
+
+			datasets: [{
+				
+				data: _data,
+	
+			}]
+
+		},
+
+		options: {
+
+			scales: {
+				
+				xAxes: [{
+
+					type: 'time',
+
+				}]
+
+			}
+
+		} 
 
 	})
 
+	//console.log(chart)
+
 }
 
+export { formatData, handleClick }

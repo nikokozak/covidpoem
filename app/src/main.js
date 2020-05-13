@@ -4,6 +4,7 @@ import Papa from './papaparse.min.js'
 import MicroModal from 'micromodal'
 import _h from './utils.js'
 import {makeTimer} from './timer.js'
+import { formatData, handleClick } from './charts.js'
 
 MicroModal.init()
 
@@ -52,7 +53,10 @@ axios.get('https://raw.githubusercontent.com/MinCiencia/Datos-COVID19/master/out
 	makeTimer('newTimer', 'Casos totales', result)
 	makeTimer('deathTimer', 'Fallecidos', result)
 	makeTimer('recoveredTimer', 'Casos recuperados', result)
-	
+
+	// TESTING CHART HANDLERS
+
+	handleClick('totalCount', formatData(10, 'Casos totales', result))
 
 });
 
@@ -121,13 +125,6 @@ axios.get('https://raw.githubusercontent.com/MinCiencia/Datos-COVID19/master/out
 	_h.changeText('quarantineList', _h.getQuarantineList(result.data))
 
 });
-
-// JQUERY MODAL HANDLES
-
-function handleClick (id, data) {
-	let handle = "#" + id
-	$(handle).on('click', () => MicroModal.show('modal'));
-} 
 
 
 
