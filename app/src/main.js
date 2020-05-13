@@ -1,7 +1,10 @@
 const axios = require('axios').default
 import Papa from './papaparse.min.js'
+import MicroModal from 'micromodal'
 import _h from './utils.js'
 import {makeTimer} from './timer.js'
+
+MicroModal.init()
 
 const PARSEOPTIONS = {
 	skipEmptyLines: true,

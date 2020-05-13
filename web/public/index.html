@@ -49,6 +49,23 @@
 				</div>
 			</div>
 		</div>
+		<button data-micromodal-trigger="modal">Open Modal</button>
+		<div class="modal micromodal-slide" id="modal" aria-hidden="true">
+			<div class="modal_overlay" tabindex="-1" data-micromodal-close>
+				<div class="modal_container" role="dialog" aria-modal="true" aria-labelledby="modal-title">
+					<header class="modal_header">
+						<h2 class="modal_title" id="modal-title">
+							Modal Title
+						</h2>
+
+						<button class="modal_close" aria-label="Close modal" data-micromodal-close></button>
+					</header>
+					<div class="modal_content" id="modal-content">
+						Modal Content
+					</div>
+				</div>
+			</div>
+		</div>
 		<script src="main.js"></script>
 	</body>
 </html>
