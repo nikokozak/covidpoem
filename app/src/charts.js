@@ -2,14 +2,14 @@ import Chart from 'chart.js'
 import $ from 'jquery'
 import MicroModal from 'micromodal'
 
-function formatData ( numRows, column, data ) {
+function formatData ( numRows, column, dateColumn, data ) {
 
 	let startIndex = data.data.length - numRows
 	let endIndex = data.data.length
 
 	let tail = data.data.slice(startIndex, endIndex)
 
-	let formatted = tail.map(d => { return { x: new Date(d.Fecha), y: d[column] } })
+	let formatted = tail.map(d => { return { x: new Date(d[dateColumn]), y: d[column] } })
 	
 	console.log('formatted', formatted)
 
@@ -40,8 +40,11 @@ function handleClick (id, chartTitle, _data) {
 					
 					data: _data,
 
-					borderColor: 'rgba(125, 0, 0, 0.5)',
-					backgroundColor: 'rgba(125, 0, 0, 0.5)',
+					lineTension: 0.2,
+
+					borderColor: 'rgba(125, 0, 0, 1)',
+					backgroundColor: 'rgba(125, 0, 0, 0.05)',
+					pointRadius: 0,
 					pointBackgroundColor: 'rgba(125, 0, 0, 0.5)',
 		
 				}]
@@ -62,7 +65,32 @@ function handleClick (id, chartTitle, _data) {
 
 						type: 'time',
 
-					}]
+						time: {
+							
+							stepSize: 2,
+
+						},
+
+						gridLines: {
+							
+							display: false,
+							drawBorder: false,
+
+						},
+
+					}],
+
+					yAxes: [{
+
+						gridLines: {
+							drawBorder: false,
+							borderDash: [1, 1],
+						},
+						ticks: {
+							padding: 10,
+						}
+
+					}],
 
 				}
 

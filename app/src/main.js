@@ -23,7 +23,7 @@ axios.get('https://raw.githubusercontent.com/MinCiencia/Datos-COVID19/master/out
 
 	result = _h.handleParseErrors(result)
 
-	console.log(result)
+	console.log('Main Page results:', result)
 
 	// Get the latest data item from the data array.
 	let latestData = _h.getLatestData(result)
@@ -47,7 +47,6 @@ axios.get('https://raw.githubusercontent.com/MinCiencia/Datos-COVID19/master/out
 	_h.changeCount("yesterdayDeadCount", deadYesterday)
 
 	let duplicateDays = _h.getDuplDayCount(latestData)
-	console.log(duplicateDays)
 	_h.changeCount("dupTime", duplicateDays)
 
 	makeTimer('newTimer', 'Casos totales', result)
@@ -56,21 +55,26 @@ axios.get('https://raw.githubusercontent.com/MinCiencia/Datos-COVID19/master/out
 
 	// CHART HANDLERS
 
-	handleClick('totalCount', 'Casos Totales', formatData(10, 'Casos totales', result))
-	handleClick('newCount', 'Casos Nuevos', formatData(10, 'Casos nuevos totales', result))
-	handleClick('activeCount', 'Casos Activos', formatData(10, 'Casos activos', result))
-	handleClick('deadCount', 'Fallecidos', formatData(10, 'Fallecidos', result))
+	handleClick('totalCount', 'Casos Totales', formatData(10, 'Casos totales', 'Fecha', result))
+	handleClick('newCount', 'Casos Nuevos', formatData(10, 'Casos nuevos totales', 'Fecha', result))
+	handleClick('activeCount', 'Casos Activos', formatData(10, 'Casos activos', 'Fecha', result))
+	handleClick('recoveredCount', 'Recuperados', formatData(10, 'Casos recuperados', 'Fecha', result))
+	handleClick('deadCount', 'Fallecidos', formatData(10, 'Fallecidos', 'Fecha', result))
 
 });
 
 // Get CSV for ventilators.
 axios.get('https://raw.githubusercontent.com/MinCiencia/Datos-COVID19/master/output/producto20/NumeroVentiladores_T.csv').then( response => {
-	
+
 	let result = Papa.parse(response.data, PARSEOPTIONS)
+
+	console.log('Ventilators results:', result)
 
 	let latestData = _h.getLatestData(result)
 
 	_h.changeCount("ventilatorCount", _h.getVentilatorCount(latestData));
+
+	handleClick('ventilatorCount', 'Ventiladores Disponibles', formatData(10, 'disponibles', 'Ventiladores', result))
 
 });
 
@@ -79,9 +83,13 @@ axios.get('https://raw.githubusercontent.com/MinCiencia/Datos-COVID19/master/out
 	
 	let result = Papa.parse(response.data, PARSEOPTIONS)
 
+	console.log('Critical results:', result)
+
 	let latestData = _h.getLatestData(result)
 
 	_h.changeCount("criticalCount", _h.getCriticalCount(latestData));
+
+	handleClick('criticalCount', 'Pacientes Criticos', formatData(10, 'Pacientes criticos', 'Casos', result))
 
 });
 
@@ -90,9 +98,13 @@ axios.get('https://raw.githubusercontent.com/MinCiencia/Datos-COVID19/master/out
 	
 	let result = Papa.parse(response.data, PARSEOPTIONS)
 
+	console.log('UCI results:', result)
+
 	let latestData = _h.getLatestData(result)
 
 	_h.changeCount("bedCount", _h.getBedCount(latestData));
+
+
 
 });
 
@@ -103,7 +115,7 @@ axios.get('https://raw.githubusercontent.com/MinCiencia/Datos-COVID19/master/out
 
 	let latestData = _h.getLatestData(result)
 
-	console.log(latestData)
+	console.log('Testing results:', result)
 
 	_h.changeCount("testCount", _h.getTestingCount(latestData));
 
