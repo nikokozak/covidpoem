@@ -42,7 +42,7 @@ axios.get('https://raw.githubusercontent.com/MinCiencia/Datos-COVID19/master/out
 	let newCountDiff = _h.diffDataFromEnd(0, 1, 'Casos nuevos totales', result)
 
 	_h.changeCount("newCountYesterday", Math.abs(newCountDiff))
-	_h.changeText('switchNew', _h.switchFormat(newCountDiff, 'mas', 'menos'))
+	_h.changeText('switchNew', _h.switchFormat(newCountDiff, 'más', 'menos'))
 
 	_h.changeCount("yesterdayDeadCount", deadYesterday)
 
