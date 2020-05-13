@@ -1,4 +1,5 @@
 const axios = require('axios').default
+import $ from 'jquery'
 import Papa from './papaparse.min.js'
 import MicroModal from 'micromodal'
 import _h from './utils.js'
@@ -120,6 +121,10 @@ axios.get('https://raw.githubusercontent.com/MinCiencia/Datos-COVID19/master/out
 	_h.changeText('quarantineList', _h.getQuarantineList(result.data))
 
 });
+
+// JQUERY MODAL HANDLES
+
+$('#newCount').on('click', () => MicroModal.show('modal'));
 
 
 console.log("Hey!");
