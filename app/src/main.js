@@ -104,7 +104,9 @@ axios.get('https://raw.githubusercontent.com/MinCiencia/Datos-COVID19/master/out
 
 	_h.changeCount("bedCount", _h.getBedCount(latestData));
 
+	console.log('UCI Bed count:', _h.getBedCount(result.data))
 
+	handleClick('bedCount', 'Pacientes en UCI', formatData(10, 'y', 'x', _h.getBedCount(result.data)))
 
 });
 
@@ -118,6 +120,8 @@ axios.get('https://raw.githubusercontent.com/MinCiencia/Datos-COVID19/master/out
 	console.log('Testing results:', result)
 
 	_h.changeCount("testCount", _h.getTestingCount(latestData));
+
+	handleClick('testCount', 'Testeo Diario', formatData(10, 'y', 'x', _h.getTestingCount(result.data)))
 
 });
 

@@ -163,22 +163,57 @@ const _h = (function() {
 	}
 
 	function getBedCount (parseData, format = true) {
+			
+		let result = 0;
 
-		let result = parseData['<=39']
-			+ parseData['40-49']
-			+ parseData['50-59']
-			+ parseData['60-69']
-			+ parseData['>=70']
+		if (Array.isArray(parseData)) {
+			result = parseData.map( d => { 
+				return {
+					x: d['Grupo de edad'],
+					y: d['<=39'] + d['40-49'] + d['50-59'] + d['60-69'] + d['>=70']
+				} 
+			})
 
-		return format ? formatNumber(result) : result
+			return result
+
+		} else {	
+
+			result = parseData['<=39']
+				+ parseData['40-49']
+				+ parseData['50-59']
+				+ parseData['60-69']
+				+ parseData['>=70']
+
+			return format ? formatNumber(result) : result
+		
+		}
 
 	}
 
 	function getTestingCount (parseData, format = true) {
-		
-		let result = parseData['Numero de PCR']
 
-		return format ? formatNumber(result) : result
+		let result = 0
+
+		if (Array.isArray(parseData)) {
+			
+			result = parseData.filter( d => d.Establecimiento == "Total informados ultimo dia" ? true : false )
+
+			result = result.map( d => {
+					
+					return { x: d['fecha'], y: d['Numero de PCR'] }
+
+			} )
+
+			return result
+
+		} else {
+
+			result = parseData['Numero de PCR']
+
+			return format ? formatNumber(result) : result
+
+		}
+
 
 	}
 

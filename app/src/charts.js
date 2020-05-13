@@ -4,10 +4,14 @@ import MicroModal from 'micromodal'
 
 function formatData ( numRows, column, dateColumn, data ) {
 
-	let startIndex = data.data.length - numRows
-	let endIndex = data.data.length
+	if (!Array.isArray(data)) {
+		data = data.data
+	}
 
-	let tail = data.data.slice(startIndex, endIndex)
+	let startIndex = data.length - numRows
+	let endIndex = data.length
+
+	let tail = data.slice(startIndex, endIndex)
 
 	let formatted = tail.map(d => { return { x: new Date(d[dateColumn]), y: d[column] } })
 	
