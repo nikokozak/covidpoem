@@ -1,7 +1,9 @@
 import Chart from 'chart.js'
-import $ from 'jquery'
 import MicroModal from 'micromodal'
 
+// WRAPPER FOR CHARTS LIBRARY //
+
+// Format PapaParse data into something readable for Chart.js
 function formatData ( numRows, column, dateColumn, data ) {
 
 	if (!Array.isArray(data)) {
@@ -21,17 +23,18 @@ function formatData ( numRows, column, dateColumn, data ) {
 
 }
 
+// Create event listeners for a given count -> activate modal and render chart.
 function handleClick (id, chartTitle, _data) {
 	
-	let handle = "#" + id
+	// let handle = "#" + id
 
-	$( handle ).on( 'click', () => { 
+	document.getElementById(id).addEventListener("click", () => { 
 
 		MicroModal.show('modal') 
 
-		$( '#chart-title' ).text( chartTitle )
+		document.getElementById('chart-title').textContent = chartTitle 
 
-		let ctx = $( '#chartInsert' )
+		let ctx = document.getElementById( 'chartInsert' ).getContext('2d')
 
 		let chart = new Chart (ctx, {
 
@@ -102,10 +105,6 @@ function handleClick (id, chartTitle, _data) {
 
 		})
 	})
-
-	
-
-	//console.log(chart)
 
 }
 

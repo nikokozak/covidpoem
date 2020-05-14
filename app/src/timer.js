@@ -1,5 +1,6 @@
 import _h from './utils.js'
 
+// Activate timer, returning stream of formatted text.
 function makeTimer (id, column, data) {
 	
 	let diff = Math.abs(_h.diffDataFromEnd(0, 1, column, data))
@@ -10,6 +11,8 @@ function makeTimer (id, column, data) {
 
 }
 
+// Based on a number of seconds, create a countdown timer that returns
+// formatted text. On reaching zero, timer resets.
 function countdownClock (secs, id=null) {
 	
 	let store = secs

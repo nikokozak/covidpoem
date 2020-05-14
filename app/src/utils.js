@@ -1,4 +1,5 @@
-// UTILITIES AND HELPERS
+
+// UTILITIES AND HELPERS //
 
 const _h = (function() {
 
@@ -76,6 +77,8 @@ const _h = (function() {
 		return format ? formatNumber(result) : result		
 	}
 
+	// Starting from the end of a Papa array, calculate the mean of the values
+	// of a given amount of rows filtered by column.
 	function meanDataFromEnd (numRows, column, parseObj, includeLast = true) {
 		
 		let data = parseObj.data
@@ -99,6 +102,7 @@ const _h = (function() {
 		return format ? formatNumber(result) : result	
 	}
 
+	// Calculate the number of days until duplication.
 	function getDuplDayCount(parseData,) {
 		
 		let result = parseData['Casos totales'] / parseData['Casos nuevos totales']
@@ -107,6 +111,7 @@ const _h = (function() {
 		
 	}
 
+	// Get the count of active cases from a single Papa data object.
 	function getActiveCount (parseData, format = true) {
 
 		let result = parseData['Casos activos']
@@ -154,6 +159,7 @@ const _h = (function() {
 
 	}
 
+	// Get the total number of gritical patients from a single Papa data object.
 	function getCriticalCount (parseData, format = true) {
 
 		let result = parseData['Pacientes criticos']
@@ -162,6 +168,8 @@ const _h = (function() {
 
 	}
 
+	// If a full Papa array, return parsed array (bed count for given range of days). 
+	// Otherwise return bed count for a single day.
 	function getBedCount (parseData, format = true) {
 			
 		let result = 0;
@@ -190,6 +198,8 @@ const _h = (function() {
 
 	}
 
+	// If a full Papa array, returned parsed array (total tests for a given range of days).
+	// Otherwise return testing count for a single day.
 	function getTestingCount (parseData, format = true) {
 
 		let result = 0
@@ -248,6 +258,7 @@ const _h = (function() {
 	}
 
 	return {
+
 		// Make public
 		handleParseErrors,
 		formatNumber,
