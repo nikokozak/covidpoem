@@ -1,3 +1,5 @@
+![Website Screenshot](./scrn.png)
+
 ## Covid-19 in Chile
 
 A simple, lightweight SPA rendering data from [Chile's Ministry of Science and
