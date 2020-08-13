@@ -1,3 +1,5 @@
+##### Note - breaking changes by Ministry of Health reporting renders this an archival repository only.
+
 ![Website Screenshot](./scrn.png)
 
 ## Covid-19 in Chile
