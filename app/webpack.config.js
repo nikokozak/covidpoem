@@ -1,18 +1,14 @@
+const path = require('path')
+
+
 module.exports = {
 	entry: './src/main.js',
-	watch: true,
 	output: {
 		filename: 'main.js',
-		path: '/home/nikokozak/webdev/covidpoem/web/public',
+		path: path.resolve(__dirname, 'build')
 	},
 	module: {
 		rules: [
-			{
-				enforce: 'pre',
-				test: /\.js$/,
-				exclude: /(node_modules|bower_components)/,
-				loader: 'eslint-loader',
-			},
 			{
 				test: /\.m?js$/,
 				exclude: /(node_modules|bower_components)/,

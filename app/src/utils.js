@@ -1,65 +1,49 @@
-
 // UTILITIES AND HELPERS //
 
 const _h = (function() {
 
-	// Handle errors thrown by Papa while parsing.
-	// Use instead of Papa callback.
-	function handleParseErrors (parseObj) {
-		
-		let errorRows = parseObj.errors.map(x => x.row)
-		errorRows.sort((a, b) => b - a)
+    // Sets the innerHTML attr for a given element (id)
+    function setValue(element_id, new_value) {
+        element = document.getElementById(element_id)
+        element.innerHTML = new_value; 
+        return element;
+    }
+
+    // Remove rows that had a parsing error
+	function removeErrorRows (parseObj) {
+        let errors = parseObj.errors
+        let errorRows = errors.map(x => x.row).sort((a, b) => b - a)
 
 		for (const index of errorRows) {
 			parseObj.data.splice(index, 1)
 		}
 
 		return parseObj
-
 	}
 
 	// Format a number by adding decimal places (returns a string)
 	function formatNumber (number) {
-		
 		return number.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ".");
-
-	}
-
-	// Change the text of a given DOM element
-	function changeText (id, newText) {
-
-		let element = document.getElementById(id)
-
-		element.innerHTML = newText
-
-		return element
-
 	}
 	
 	// Get the latest data entry from the Papa object data array.
 	function getLatestData (parseObj) {
-
 		return parseObj.data[parseObj.data.length - 1]
-
 	}
 
 	// Return a slice from the tail of the Papa object data array.
 	function getTailData (parseObj, count = 1, includeLast = false) {
-	
 		let data = parseObj.data
 
 		let sliceStart = data.length - 1 - count
 		let sliceEnd = data.length
 
 		return includeLast ? data.slice(sliceStart, sliceEnd) : data.slice(sliceStart, sliceEnd - 1)
-
 	}
 	
 	// Simple ternary - if positive return first arg, if not second.
 	function switchFormat (value, optionPos, optionNeg) {
-		
 		return value >= 0 ? optionPos : optionNeg
-
 	}
 
 	// Calculate the difference between two data rows using an index relative to the end
@@ -232,39 +216,24 @@ const _h = (function() {
 		
 		let result = data.reduce( (a, c) => 
 			{
-				
 				let re = /([\s\S]*)(Extensión a Total|Extendido|Re-ingreso total|Re-ingreso Total)/gu
 				let test = re.exec(c['Nombre'].toString())
 
 				let result = test ? test[1].slice(0, -1) : c['Nombre']
 				
 				return a + result + ', ' 
-			
 			}, '')
 
 		return result.slice(0, result.length - 2)
-
-	}
-	
-	// Change the count displayed in a given id tag.
-	function changeCount (id, newCount) {
-		
-		let element = document.getElementById(id)
-
-		element.innerHTML = newCount
-
-		return element
-
 	}
 
 	return {
 
 		// Make public
-		handleParseErrors,
+        setValue,
+		removeErrorRows,
 		formatNumber,
-		changeText,
 		meanDataFromEnd,
-		changeCount,
 		switchFormat,
 		diffDataFromEnd,
 		getTailData,

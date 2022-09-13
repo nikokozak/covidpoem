@@ -25,7 +25,8 @@ axios.get('https://raw.githubusercontent.com/MinCiencia/Datos-COVID19/master/out
 	// Parse response with PapaParse
 	let result = Papa.parse(response.data, PARSEOPTIONS);
 
-	result = _h.handleParseErrors(result)
+    // Remove rows that had a parsing error
+	result = _h.removeErrorRows(result)
 
 	// -- DEBUG -- console.log('Main Page results:', result)
 
@@ -33,29 +34,29 @@ axios.get('https://raw.githubusercontent.com/MinCiencia/Datos-COVID19/master/out
 	let latestData = _h.getLatestData(result)
 
 	// Adjust text on page.
-	_h.changeText('refreshDate', _h.getDate(latestData))
+	_h.setValue('refreshDate', _h.getDate(latestData))
 
 	// Refresh counters.
-	_h.changeCount("totalCount", _h.getTotalCount(latestData))
-	_h.changeCount("newCount", _h.getNewCount(latestData))
-	_h.changeCount("activeCount", _h.getActiveCount(latestData))
-	_h.changeCount("recoveredCount", _h.getRecoveredCount(latestData))
-	_h.changeCount("deadCount", _h.getDeadCount(latestData))
+	_h.setValue("totalCount", _h.getTotalCount(latestData))
+	_h.setValue("newCount", _h.getNewCount(latestData))
+	_h.setValue("activeCount", _h.getActiveCount(latestData))
+	_h.setValue("recoveredCount", _h.getRecoveredCount(latestData))
+	_h.setValue("deadCount", _h.getDeadCount(latestData))
 
 	// Calculate wrangled numbers (difference of dead between yesterday/today, etc)
 	let deadYesterday = _h.diffDataFromEnd(0, 1, 'Fallecidos', result)
 	let newCountDiff = _h.diffDataFromEnd(0, 1, 'Casos nuevos totales', result)
 
-	_h.changeCount("newCountYesterday", _h.formatNumber(Math.abs(newCountDiff)))
+	_h.setValue("newCountYesterday", _h.formatNumber(Math.abs(newCountDiff)))
 
 	// Handle lexical switch based on neg/pos numbers.
-	_h.changeText('switchNew', _h.switchFormat(newCountDiff, 'más', 'menos'))
+	_h.setValue('switchNew', _h.switchFormat(newCountDiff, 'más', 'menos'))
 
-	_h.changeCount("yesterdayDeadCount", deadYesterday)
+	_h.setValue("yesterdayDeadCount", deadYesterday)
 
 	// Calculate days-to-duplicate
 	let duplicateDays = _h.getDuplDayCount(latestData)
-	_h.changeCount("dupTime", duplicateDays)
+	_h.setValue("dupTime", duplicateDays)
 
 	// Timers
 	makeTimer('newTimer', 'Casos totales', result)
@@ -83,7 +84,7 @@ axios.get('https://raw.githubusercontent.com/MinCiencia/Datos-COVID19/master/out
 	let latestData = _h.getLatestData(result)
 
 	// Refresh count.
-	_h.changeCount("ventilatorCount", _h.getVentilatorCount(latestData));
+	_h.setValue("ventilatorCount", _h.getVentilatorCount(latestData));
 
 	// Chart handler.
 	handleClick('ventilatorCount', 'Ventiladores Disponibles', formatData(10, 'disponibles', 'Ventiladores', result))
@@ -102,7 +103,7 @@ axios.get('https://raw.githubusercontent.com/MinCiencia/Datos-COVID19/master/out
 	let latestData = _h.getLatestData(result)
 
 	// Refresh count
-	_h.changeCount("criticalCount", _h.getCriticalCount(latestData));
+	_h.setValue("criticalCount", _h.getCriticalCount(latestData));
 
 	// Chart handler.
 	handleClick('criticalCount', 'Pacientes Criticos', formatData(10, 'Pacientes criticos', 'Casos', result))
@@ -121,7 +122,7 @@ axios.get('https://raw.githubusercontent.com/MinCiencia/Datos-COVID19/master/out
 	let latestData = _h.getLatestData(result)
 
 	// Refresh count.
-	_h.changeCount("bedCount", _h.getBedCount(latestData));
+	_h.setValue("bedCount", _h.getBedCount(latestData));
 
 	// -- DEBUG -- console.log('UCI Bed count:', _h.getBedCount(result.data))
 
@@ -142,7 +143,7 @@ axios.get('https://raw.githubusercontent.com/MinCiencia/Datos-COVID19/master/out
 	// -- DEBUG -- console.log('Testing results:', result)
 
 	// Refresh count. 
-	_h.changeCount("testCount", _h.getTestingCount(latestData));
+	_h.setValue("testCount", _h.getTestingCount(latestData));
 
 	// Chart hanlder.
 	handleClick('testCount', 'Testeo Diario', formatData(10, 'y', 'x', _h.getTestingCount(result.data)))
@@ -159,7 +160,7 @@ axios.get('https://raw.githubusercontent.com/MinCiencia/Datos-COVID19/master/out
 	let latestData = _h.meanDataFromEnd(16, 'Tasa', result)
 
 	// Refresh count.
-	_h.changeCount("rateCount", latestData);
+	_h.setValue("rateCount", latestData);
 
 });
 
@@ -171,7 +172,7 @@ axios.get('https://raw.githubusercontent.com/MinCiencia/Datos-COVID19/master/out
 	let result = Papa.parse(response.data, PARSEOPTIONS)
 	
 	// Refresh quarantine list.
-	_h.changeText('quarantineList', _h.getQuarantineList(result.data))
+	_h.setValue('quarantineList', _h.getQuarantineList(result.data))
 
 });
 
