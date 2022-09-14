@@ -1,6 +1,8 @@
 app/.DS_Store
 app/node_modules
 app/dist
+app/.parcel-cache
+app/src/dist
 
 # local env files
 app/.env.local
