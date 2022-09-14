@@ -113,8 +113,8 @@ const _h = (function() {
 
 	// Get the recovered cases from a single Papa data object.
 	function getRecoveredCount (parseData, format = true) {
-
-		let result = parseData['Casos recuperados']
+console.log(parseData)
+		let result = parseData['Casos recuperados por FIS']
 
 		return format ? formatNumber(result) : result
 	}

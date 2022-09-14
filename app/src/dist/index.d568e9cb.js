@@ -581,7 +581,7 @@ const PARSEOPTIONS = {
     // Timers
     (0, _timerJs.makeTimer)("newTimer", "Casos totales", result);
     (0, _timerJs.makeTimer)("deathTimer", "Fallecidos", result);
-    (0, _timerJs.makeTimer)("recoveredTimer", "Casos recuperados", result);
+    (0, _timerJs.makeTimer)("recoveredTimer", "Casos recuperados por FIS", result);
     // CHART HANDLERS
     (0, _chartsJs.handleClick)("totalCount", "Casos Totales", (0, _chartsJs.formatData)(10, "Casos totales", "Fecha", result));
     (0, _chartsJs.handleClick)("newCount", "Casos Nuevos", (0, _chartsJs.formatData)(10, "Casos nuevos totales", "Fecha", result));
@@ -1600,7 +1600,8 @@ const _h = function() {
     }
     // Get the recovered cases from a single Papa data object.
     function getRecoveredCount(parseData, format = true) {
-        let result = parseData["Casos recuperados"];
+        console.log(parseData);
+        let result = parseData["Casos recuperados por FIS"];
         return format ? formatNumber(result) : result;
     }
     // Get the death count from a single Papa data object.
