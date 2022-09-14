@@ -1,14 +1,16 @@
-##### Note - breaking changes by Ministry of Health reporting renders this an archival repository only.
+## Live Demo
 
-![Website Screenshot](./scrn.png)
+(Chile - Covid Poem)[https://chile-covidpoem.onrender.com/]
 
 ## Covid-19 in Chile
 
-A simple, lightweight SPA rendering data from [Chile's Ministry of Science and
+![Website Screenshot](./scrn.png)
+
+A simple page rendering data from [Chile's Ministry of Science and
 Technology](https://github.com/MinCiencia) in a text-based format. I get a bit overwhelmed by charts, and
 wanted to make something cleaner, and hopefully somewhat more interesting than
 the typical numerical-only counters. That said, charts are still available as
-modals.
+modals, simply click on the various underlined numbers to pull them up.
 
 ### Details
 
@@ -19,6 +21,3 @@ The site is written in vanilla JS, and uses a few lightweight libraries:
 - **PapParser** for CSV parsing.
 - **Axios** for http requests.
 - **Bootstrap.css** for basic grid styling.
-
-At the moment, the site is hosted on an azure vm running nginx.
-
