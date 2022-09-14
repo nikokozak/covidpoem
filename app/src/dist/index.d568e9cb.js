@@ -586,7 +586,7 @@ const PARSEOPTIONS = {
     (0, _chartsJs.handleClick)("totalCount", "Casos Totales", (0, _chartsJs.formatData)(10, "Casos totales", "Fecha", result));
     (0, _chartsJs.handleClick)("newCount", "Casos Nuevos", (0, _chartsJs.formatData)(10, "Casos nuevos totales", "Fecha", result));
     (0, _chartsJs.handleClick)("activeCount", "Casos Activos", (0, _chartsJs.formatData)(10, "Casos activos", "Fecha", result));
-    (0, _chartsJs.handleClick)("recoveredCount", "Recuperados", (0, _chartsJs.formatData)(10, "Casos recuperados", "Fecha", result));
+    (0, _chartsJs.handleClick)("recoveredCount", "Recuperados", (0, _chartsJs.formatData)(10, "Casos recuperados por FIS", "Fecha", result));
     (0, _chartsJs.handleClick)("deadCount", "Fallecidos", (0, _chartsJs.formatData)(10, "Fallecidos", "Fecha", result));
 });
 /* ---------------- */ //	VENTILATOR DATA //
@@ -607,7 +607,7 @@ const PARSEOPTIONS = {
     // Refresh count
     (0, _utilsJsDefault.default).setValue("criticalCount", (0, _utilsJsDefault.default).getCriticalCount(latestData));
     // Chart handler.
-    (0, _chartsJs.handleClick)("criticalCount", "Pacientes Criticos", (0, _chartsJs.formatData)(10, "Pacientes criticos", "Casos", result));
+    (0, _chartsJs.handleClick)("criticalCount", "Pacientes Criticos", (0, _chartsJs.formatData)(10, "Pacientes criticos", "Variable", result));
 });
 /* ----------------- */ //	UCI PATIENT DATA //
 /* ---------------- */ axios.get("https://raw.githubusercontent.com/MinCiencia/Datos-COVID19/master/output/producto9/HospitalizadosUCIEtario_T.csv").then((response)=>{

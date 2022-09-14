@@ -5,7 +5,7 @@
   "private": true,
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
-    "start": "snowpack start",
+    "start": "parcel",
     "build": "snowpack build"
   },
   "author": "Nikolai Kozak",
@@ -23,5 +23,10 @@
     "axios": "^0.19.2",
     "chart.js": "^2.9.3",
     "micromodal": "^0.4.6"
+  },
+  "targets": {
+      "default": {
+          "distDir": "../dist"
+      }
   }
 }

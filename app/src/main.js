@@ -67,7 +67,7 @@ axios.get('https://raw.githubusercontent.com/MinCiencia/Datos-COVID19/master/out
 	handleClick('totalCount', 'Casos Totales', formatData(10, 'Casos totales', 'Fecha', result))
 	handleClick('newCount', 'Casos Nuevos', formatData(10, 'Casos nuevos totales', 'Fecha', result))
 	handleClick('activeCount', 'Casos Activos', formatData(10, 'Casos activos', 'Fecha', result))
-	handleClick('recoveredCount', 'Recuperados', formatData(10, 'Casos recuperados', 'Fecha', result))
+	handleClick('recoveredCount', 'Recuperados', formatData(10, 'Casos recuperados por FIS', 'Fecha', result))
 	handleClick('deadCount', 'Fallecidos', formatData(10, 'Fallecidos', 'Fecha', result))
 
 });
@@ -106,7 +106,7 @@ axios.get('https://raw.githubusercontent.com/MinCiencia/Datos-COVID19/master/out
 	_h.setValue("criticalCount", _h.getCriticalCount(latestData));
 
 	// Chart handler.
-	handleClick('criticalCount', 'Pacientes Criticos', formatData(10, 'Pacientes criticos', 'Casos', result))
+	handleClick('criticalCount', 'Pacientes Criticos', formatData(10, 'Pacientes criticos', 'Variable', result))
 
 });
 
