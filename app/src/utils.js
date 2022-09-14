@@ -4,7 +4,7 @@ const _h = (function() {
 
     // Sets the innerHTML attr for a given element (id)
     function setValue(element_id, new_value) {
-        element = document.getElementById(element_id)
+        let element = document.getElementById(element_id)
         element.innerHTML = new_value; 
         return element;
     }

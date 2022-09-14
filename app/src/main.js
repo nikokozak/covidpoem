@@ -2,7 +2,7 @@ const axios = require('axios').default // HTTP Requests
 import Papa from './papaparse.min.js' // CSV Parser
 import MicroModal from 'micromodal' // Modal handler
 import _h from './utils.js' // Custom helpers
-import {makeTimer} from './timer.js' // Custom timer for clocks
+import { makeTimer } from './timer.js' // Custom timer for clocks
 import { formatData, handleClick } from './charts.js' // Chart wrapper
 
 // Modal handler.
@@ -176,4 +176,4 @@ axios.get('https://raw.githubusercontent.com/MinCiencia/Datos-COVID19/master/out
 
 });
 
-console.log("Hola hola!!");
+console.log("Hello hola!!");
