@@ -1,6 +1,6 @@
 ## Live Demo
 
-(Chile - Covid Poem)[https://chile-covidpoem.onrender.com/]
+[Chile - Covid Poem](https://chile-covidpoem.onrender.com/)
 
 ## Covid-19 in Chile
 
